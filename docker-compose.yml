@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  juice-shop:
+    image: bkimminich/juice-shop
+    container_name: juice-shop
+    ports:
+      - "3000:3000"
+    networks:
+      pentest-network:
+        ipv4_address: 172.20.0.10
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+
+  metasploitable3:
+    image: tleemcclain/metasploitable3-ubuntu
+    container_name: metasploitable3
+    ports:
+      - "21:21"      # FTP
+      - "22:22"      # SSH
+      - "23:23"      # Telnet
+      - "80:80"      # HTTP
+      - "139:139"    # NetBIOS
+      - "445:445"    # SMB
+      - "3306:3306"  # MySQL
+      - "5432:5432"  # PostgreSQL
+      - "8080:8080"  # HTTP Alt
+    networks:
+      pentest-network:
+        ipv4_address: 172.20.0.20
+    restart: unless-stopped
+    privileged: true
+
+  dvwa:
+    image: vulnerables/web-dvwa
+    container_name: dvwa
+    ports:
+      - "8081:80"
+    networks:
+      pentest-network:
+        ipv4_address: 172.20.0.30
+    restart: unless-stopped
+    environment:
+      - PHP_VERSION=8
+
+networks:
+  pentest-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/24
+          gateway: 172.20.0.1
