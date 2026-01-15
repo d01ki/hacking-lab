@@ -39,18 +39,23 @@
 
 #### 2. Metasploitable3 Ubuntu (`172.20.0.20`)
 
-**イメージ**: `tleemcclain/metasploitable3-ubuntu`
+**イメージ**: `kirscht/metasploitable3-ub1404`
 
 **アクセス**:
 - HTTP: http://localhost:80
-- SSH: `ssh <user>@localhost -p 22`
+- SSH: `ssh msfadmin@localhost -p 22`
 - その他多数のサービスが稼働
 
+**デフォルト認証情報**:
+- ユーザー名: `msfadmin`
+- パスワード: `msfadmin`
+
 **説明**:
-- Rapid7 が開発した脆弱な Ubuntu ベースのシステム
+- Rapid7 が開発した脆弱な Ubuntu ベースのシステム（コミュニティ Docker イメージ）
 - 複数の脆弱なサービスとアプリケーションが稼働
 - ネットワークサービスの脆弱性、権限昇格、エクスプロイトの実践に最適
 - FTP、SSH、Telnet、HTTP、SMB、MySQL、PostgreSQL など多数のサービス
+- **注意**: 公式 Rapid7 イメージではなく、コミュニティが作成したイメージです
 
 **学習内容**:
 - ネットワークスキャン（Nmap）

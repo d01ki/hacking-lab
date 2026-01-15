@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   juice-shop:
     image: bkimminich/juice-shop
@@ -14,7 +12,7 @@ services:
       - NODE_ENV=production
 
   metasploitable3:
-    image: tleemcclain/metasploitable3-ubuntu
+    image: kirscht/metasploitable3-ub1404
     container_name: metasploitable3
     ports:
       - "21:21"      # FTP
